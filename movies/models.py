@@ -39,7 +39,7 @@ class Genre(models.Model):
 
     class Meta:
         verbose_name = "Жанр"
-        verbose_name = "Жанры"
+        verbose_name_plural = "Жанры"
 
 
 class Movie(models.Model):
@@ -65,7 +65,7 @@ class Movie(models.Model):
 
     class Meta:
         verbose_name = "Фильм"
-        verbose_name = "Фильмы"
+        verbose_name_plural = "Фильмы"
 
 
 class MovieShots(models.Model):
@@ -79,7 +79,7 @@ class MovieShots(models.Model):
 
     class Meta:
         verbose_name = "Кадр из фильма"
-        verbose_name = "Кадры из фильма"
+        verbose_name_plural = "Кадры из фильма"
 
 
 class RatingStar(models.Model):
@@ -90,7 +90,7 @@ class RatingStar(models.Model):
 
     class Meta:
         verbose_name = "Звезда рейтинга"
-        verbose_name = "Звезды рейтинга"
+        verbose_name_plural = "Звезды рейтинга"
 
 
 class Rating(models.Model):
@@ -103,7 +103,7 @@ class Rating(models.Model):
 
     class Meta:
         verbose_name = "Рейтинг"
-        verbose_name = "Рейтинги"
+        verbose_name_plural = "Рейтинги"
 
 
 class Reviews(models.Model):
@@ -118,4 +118,4 @@ class Reviews(models.Model):
 
     class Meta:
         verbose_name = "Отзыв"
-        verbose_name = "Отзывы"
+        verbose_name_plural = "Отзывы"
