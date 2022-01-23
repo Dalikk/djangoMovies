@@ -61,7 +61,7 @@ class Movie(models.Model):
     draft = models.BooleanField("Черновик", default=False)
 
     def __str__(self):
-        self.title
+        return self.title
 
     class Meta:
         verbose_name = "Фильм"
@@ -75,7 +75,7 @@ class MovieShots(models.Model):
     movie = models.ForeignKey(Movie, verbose_name="Фильм", on_delete=models.CASCADE)
 
     def __str__(self):
-        self.title
+        return self.title
 
     class Meta:
         verbose_name = "Кадр из фильма"
