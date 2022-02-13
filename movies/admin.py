@@ -11,6 +11,14 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
     list_display = ("title", "category", "url", "draft")
+    list_filter = ("category", "year")
+    search_fields = ("title", "category__name")
+
+
+@admin.register(Reviews)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "parent", "movie", "id")
+    readonly_fields = ("name", "email")
 
 
 admin.site.register(Genre)
@@ -18,4 +26,3 @@ admin.site.register(MovieShots)
 admin.site.register(Actor)
 admin.site.register(Rating)
 admin.site.register(RatingStar)
-admin.site.register(Reviews)
