@@ -8,9 +8,10 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display_links = ("name", )
 
 
-class ReviewInline(admin.StackedInline):
+class ReviewInline(admin.TabularInline):
     model = Reviews
     extra = 1
+    readonly_fields = ("name", "email")
 
 
 @admin.register(Movie)
@@ -19,6 +20,29 @@ class MovieAdmin(admin.ModelAdmin):
     list_filter = ("category", "year")
     search_fields = ("title", "category__name")
     inlines = [ReviewInline]
+    save_on_top = True
+    save_as = True
+    list_editable = ("draft", )
+    fieldsets = (
+        (None, {
+            "fields": (("title", "tagline"), )
+        }),
+        (None, {
+            "fields": ("description", "poster",)
+        }),
+        (None, {
+            "fields": (("year", "world_premiere", "country"),)
+        }),
+        (None, {
+            "fields": (("actors", "directors", "genres", "category"), )
+        }),
+        (None, {
+            "fields": (("budget", "fees_in_usa", "fees_in_world"), )
+        }),
+        (None, {
+            "fields": (("url", "draft", ),)
+        }),
+    )
 
 
 @admin.register(Reviews)
