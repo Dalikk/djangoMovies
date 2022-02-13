@@ -33,13 +33,14 @@ class MovieAdmin(admin.ModelAdmin):
         (None, {
             "fields": (("year", "world_premiere", "country"),)
         }),
-        (None, {
+        ("Actors", {
+            "classes": ("collapse", ),
             "fields": (("actors", "directors", "genres", "category"), )
         }),
         (None, {
             "fields": (("budget", "fees_in_usa", "fees_in_world"), )
         }),
-        (None, {
+        ("Options", {
             "fields": (("url", "draft", ),)
         }),
     )
@@ -51,8 +52,24 @@ class ReviewAdmin(admin.ModelAdmin):
     readonly_fields = ("name", "email")
 
 
-admin.site.register(Genre)
-admin.site.register(MovieShots)
-admin.site.register(Actor)
-admin.site.register(Rating)
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+    list_display = ("name", "url")
+
+
+@admin.register(Actor)
+class ActorAdmin(admin.ModelAdmin):
+    list_display = ("name", "age")
+
+
+@admin.register(Rating)
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ("name", "ip")
+
+
+@admin.register(MovieShots)
+class MovieShotsAdmin(admin.ModelAdmin):
+    list_display = ("title", "movie")
+
+
 admin.site.register(RatingStar)
