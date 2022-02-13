@@ -8,11 +8,17 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display_links = ("name", )
 
 
+class ReviewInline(admin.StackedInline):
+    model = Reviews
+    extra = 1
+
+
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
     list_display = ("title", "category", "url", "draft")
     list_filter = ("category", "year")
     search_fields = ("title", "category__name")
+    inlines = [ReviewInline]
 
 
 @admin.register(Reviews)
